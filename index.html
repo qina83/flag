@@ -12275,7 +12275,7 @@
         var flagContainer = document.createElement("div");
         var flag = document.createElement("div");
         flag.innerText = countries[i].emoji;
-        flag.style.fontSize = '200px';
+        flag.style.fontSize = '300px';
         flagContainer.appendChild(flag);
         country.appendChild(flagContainer);
 
@@ -12284,21 +12284,19 @@
         nameEl.setAttribute("id", 'nome_' + countries[i].id);
         nameEl.style.display = 'none';
         nameEl.appendChild(document.createTextNode(countries[i].name));
-        nameEl.style.height = '5%';
         nameEl.style.marginTop = '10px';
         nameEl.style.marginBottom = '10px';
         nameEl.style.textTransform = 'uppercase';
-        nameEl.style.fontSize = '20px';
+        nameEl.style.fontSize = '50px';
         country.appendChild(nameEl);
 
         var btn = document.createElement("button");
         btn.innerText = 'MOSTRA NOME';
         btn.setAttribute("id", 'btn_nome_' + countries[i].id);
         btn.onclick = () => myFunction('nome_' + countries[i].id, 'btn_nome_' + countries[i].id);
-        btn.style.width = '40%';
-        btn.style.height = '5%';
         btn.style.marginTop = '10px';
         btn.style.marginBottom = '10px';
+        btn.style.fontSize = '50px';
 
         country.appendChild(btn);
 
@@ -12306,27 +12304,29 @@
         capital.setAttribute("id", 'capital_' + countries[i].id);
         capital.style.display = 'none';
         capital.appendChild(document.createTextNode(countries[i].capital));
-        capital.style.height = '5%';
         capital.style.marginTop = '10px';
         capital.style.marginBottom = '10px';
         capital.style.textTransform = 'uppercase';
-        capital.style.fontSize = '20px';
+        capital.style.fontSize = '50px';
         country.appendChild(capital);
 
         var br = document.createElement("br");
         country.appendChild(br);
-        
+
         var btnCapital = document.createElement("button");
         btnCapital.innerText = 'MOSTRA CAPITALE';
         btnCapital.setAttribute("id", 'btn_capital_' + countries[i].id);
         btnCapital.onclick = () => myFunction('capital_' + countries[i].id, 'btn_capital_' + countries[i].id);
-        btnCapital.style.width = '40%';
-        btnCapital.style.height = '5%';
         btnCapital.style.marginTop = '10px';
         btnCapital.style.marginBottom = '10px';
+        btnCapital.style.fontSize = '50px';
 
         country.appendChild(btnCapital);
     }     
+
+    setTimeout(() => {
+        window.scrollTo(0, 0);
+        }, 100);
 </script>
 
 </html>
