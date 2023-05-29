@@ -515,11 +515,6 @@
         "flag": "//upload.wikimedia.org/wikipedia/commons/2/2e/Flag_of_the_Marshall_Islands.svg"
     },
     {
-        "country": "Martinique",
-        "capital": "Fort-de-France",
-        "flag": "//upload.wikimedia.org/wikipedia/commons/5/52/Flag_of_Martinique.svg"
-    },
-    {
         "country": "Mauritania",
         "capital": "Nouakchott",
         "flag": "//upload.wikimedia.org/wikipedia/commons/4/43/Flag_of_Mauritania.svg"
@@ -710,11 +705,6 @@
         "flag": "//upload.wikimedia.org/wikipedia/commons/b/b1/Flag_of_San_Marino.svg"
     },
     {
-        "country": "Sao Tome e Principe",
-        "capital": "Sao tomè",
-        "flag": "//upload.wikimedia.org/wikipedia/commons/4/4f/Flag_of_Sao_Tome_and_Principe.svg"
-    },
-    {
         "country": "Arabia Saudita",
         "capital": "Riad",
         "flag": "//upload.wikimedia.org/wikipedia/commons/0/0d/Flag_of_Saudi_Arabia.svg"
@@ -783,11 +773,6 @@
         "country": "Suriname",
         "capital": "Paramaribo",
         "flag": "//upload.wikimedia.org/wikipedia/commons/6/60/Flag_of_Suriname.svg"
-    },
-    {
-        "country": "Eswatini",
-        "capital": "Lobamba",
-        "flag": "//upload.wikimedia.org/wikipedia/commons/1/1e/Flag_of_Swaziland.svg"
     },
     {
         "country": "Svezia",
