@@ -1,9 +1,4 @@
-let countries = [
-    // {
-    //     "country": "Afghanistan",
-    //     "capital": "Kabul",
-    //     "flag": "//upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Afghanistan.svg"
-    // },
+[
     {
         "country": "Albania",
         "capital": "Tirana",
@@ -899,4 +894,4 @@ let countries = [
         "capital": "Harare",
         "flag": "//upload.wikimedia.org/wikipedia/commons/6/6a/Flag_of_Zimbabwe.svg"
     }
-];
+]

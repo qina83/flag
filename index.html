@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <script type="module" src="./countries.js"></script>
+
     <style>
         .country {
             width: 100%;
@@ -67,9 +67,11 @@
     }
 
 
-    let containerCountries = document.getElementById('countries');
-    console.log(countries.length)
-    for (let i = 0; i < countries.length; i++) {
+
+    fetch("countries.json")
+        .then(response => {
+
+            for (let i = 0; i < countries.length; i++) {
         var country = document.createElement("div");
         country.className = 'country';
         country.setAttribute("id", countries[i].country);
@@ -111,6 +113,13 @@
         btnCapital.className = 'btn';
         country.appendChild(btnCapital);
     }
+
+
+        })
+    let containerCountries = document.getElementById('countries');
+
+
+
 
     setTimeout(() => {
         window.scrollTo(0, 0);
