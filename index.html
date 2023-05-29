@@ -1,5 +1,36 @@
 <html>
 
+<head>
+    <style>
+        .country {
+            width: 100%;
+            min-height: 100%;
+            text-align: center;
+        }
+
+        .flag {
+            width: auto;
+            max-width: 80%;
+            max-height: 80%;
+            display: block;
+            margin: auto;
+        }
+
+        .label {
+            margin: 10px;
+            text-transform: uppercase;
+            font-size: 50px;
+            display: none;
+        }
+
+        .btn {
+            margin: 10px;
+            text-transform: uppercase;
+            font-size: 50px;
+        }
+    </style>
+</head>
+
 <body style="background-color: lightgray;">
     <div>
         <div id='countries'>
@@ -936,54 +967,40 @@
             "flag": "//upload.wikimedia.org/wikipedia/commons/6/6a/Flag_of_Zimbabwe.svg"
         }
     ];
-   // countries = shuffle(countries);
+    // countries = shuffle(countries);
 
     let containerCountries = document.getElementById('countries');
     console.log(countries.length)
     for (let i = 0; i < countries.length; i++) {
         var country = document.createElement("div");
-        country.style.width = '100%';
-        country.style.minHeight = '100%';
-        country.style.textAlign = 'center';
-        country.setAttribute("id", countries[i].id);
+        country.className = 'country';
+        country.setAttribute("id", countries[i].country);
         containerCountries.appendChild(country);
 
-        var flagContainer = document.createElement("div");
         var flag = document.createElement("img");
-        flag.setAttribute('src', 'https:'+countries[i].flag);
-        flag.style.width = '100%';
-        flagContainer.appendChild(flag);
-        country.appendChild(flagContainer);
+        flag.setAttribute('src', 'https:' + countries[i].flag);
+        flag.className = 'flag';
+        country.appendChild(flag);
 
 
         var nameEl = document.createElement("div");
         nameEl.setAttribute("id", 'nome_' + countries[i].country);
-        nameEl.style.display = 'none';
+        nameEl.className = 'label';
         nameEl.appendChild(document.createTextNode(countries[i].country));
-        nameEl.style.marginTop = '10px';
-        nameEl.style.marginBottom = '10px';
-        nameEl.style.textTransform = 'uppercase';
-        nameEl.style.fontSize = '50px';
         country.appendChild(nameEl);
 
         var btn = document.createElement("button");
         btn.innerText = 'MOSTRA NOME';
+        btn.className = 'btn';
         btn.setAttribute("id", 'btn_nome_' + countries[i].country);
         btn.onclick = () => myFunction('nome_' + countries[i].country, 'btn_nome_' + countries[i].country);
-        btn.style.marginTop = '10px';
-        btn.style.marginBottom = '10px';
-        btn.style.fontSize = '50px';
 
         country.appendChild(btn);
 
         var capital = document.createElement("div");
         capital.setAttribute("id", 'capital_' + countries[i].country);
-        capital.style.display = 'none';
+        capital.className = 'label';
         capital.appendChild(document.createTextNode(countries[i].capital));
-        capital.style.marginTop = '10px';
-        capital.style.marginBottom = '10px';
-        capital.style.textTransform = 'uppercase';
-        capital.style.fontSize = '50px';
         country.appendChild(capital);
 
         var br = document.createElement("br");
@@ -993,10 +1010,7 @@
         btnCapital.innerText = 'MOSTRA CAPITALE';
         btnCapital.setAttribute("id", 'btn_capital_' + countries[i].country);
         btnCapital.onclick = () => myFunction('capital_' + countries[i].country, 'btn_capital_' + countries[i].country);
-        btnCapital.style.marginTop = '10px';
-        btnCapital.style.marginBottom = '10px';
-        btnCapital.style.fontSize = '50px';
-
+        btnCapital.className = 'btn';
         country.appendChild(btnCapital);
     }
 
