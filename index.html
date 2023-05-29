@@ -71,48 +71,49 @@
     fetch("countries.json")
         .then(response => {
 
+            countries = response.json();
             for (let i = 0; i < countries.length; i++) {
-        var country = document.createElement("div");
-        country.className = 'country';
-        country.setAttribute("id", countries[i].country);
-        containerCountries.appendChild(country);
+                var country = document.createElement("div");
+                country.className = 'country';
+                country.setAttribute("id", countries[i].country);
+                containerCountries.appendChild(country);
 
-        var flag = document.createElement("img");
-        flag.setAttribute('src', 'https:' + countries[i].flag);
-        flag.className = 'flag';
-        country.appendChild(flag);
+                var flag = document.createElement("img");
+                flag.setAttribute('src', 'https:' + countries[i].flag);
+                flag.className = 'flag';
+                country.appendChild(flag);
 
 
-        var nameEl = document.createElement("div");
-        nameEl.setAttribute("id", 'nome_' + countries[i].country);
-        nameEl.className = 'label';
-        nameEl.appendChild(document.createTextNode(countries[i].country));
-        country.appendChild(nameEl);
+                var nameEl = document.createElement("div");
+                nameEl.setAttribute("id", 'nome_' + countries[i].country);
+                nameEl.className = 'label';
+                nameEl.appendChild(document.createTextNode(countries[i].country));
+                country.appendChild(nameEl);
 
-        var btn = document.createElement("button");
-        btn.innerText = 'MOSTRA NOME';
-        btn.className = 'btn';
-        btn.setAttribute("id", 'btn_nome_' + countries[i].country);
-        btn.onclick = () => myFunction('nome_' + countries[i].country, 'btn_nome_' + countries[i].country);
+                var btn = document.createElement("button");
+                btn.innerText = 'MOSTRA NOME';
+                btn.className = 'btn';
+                btn.setAttribute("id", 'btn_nome_' + countries[i].country);
+                btn.onclick = () => myFunction('nome_' + countries[i].country, 'btn_nome_' + countries[i].country);
 
-        country.appendChild(btn);
+                country.appendChild(btn);
 
-        var capital = document.createElement("div");
-        capital.setAttribute("id", 'capital_' + countries[i].country);
-        capital.className = 'label';
-        capital.appendChild(document.createTextNode(countries[i].capital));
-        country.appendChild(capital);
+                var capital = document.createElement("div");
+                capital.setAttribute("id", 'capital_' + countries[i].country);
+                capital.className = 'label';
+                capital.appendChild(document.createTextNode(countries[i].capital));
+                country.appendChild(capital);
 
-        var br = document.createElement("br");
-        country.appendChild(br);
+                var br = document.createElement("br");
+                country.appendChild(br);
 
-        var btnCapital = document.createElement("button");
-        btnCapital.innerText = 'MOSTRA CAPITALE';
-        btnCapital.setAttribute("id", 'btn_capital_' + countries[i].country);
-        btnCapital.onclick = () => myFunction('capital_' + countries[i].country, 'btn_capital_' + countries[i].country);
-        btnCapital.className = 'btn';
-        country.appendChild(btnCapital);
-    }
+                var btnCapital = document.createElement("button");
+                btnCapital.innerText = 'MOSTRA CAPITALE';
+                btnCapital.setAttribute("id", 'btn_capital_' + countries[i].country);
+                btnCapital.onclick = () => myFunction('capital_' + countries[i].country, 'btn_capital_' + countries[i].country);
+                btnCapital.className = 'btn';
+                country.appendChild(btnCapital);
+            }
 
 
         })
