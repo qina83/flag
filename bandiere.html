@@ -7,7 +7,7 @@
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-            
+            justify-content: center;
         }
 
         .flagContainer {
@@ -22,20 +22,136 @@
             justify-content: center;
         }
 
-        .flag{
+        .flagContainerGame {
+            margin: 10px;
+            padding: 10px;
+            width: 25%;
+            background-color: darkgray;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-direction: column;
+        }
+
+        .flag {
             max-width: 100%;
             height: auto;
-            
+        }
+
+        .label {
+            margin: 10px;
+            text-transform: uppercase;
+            font-size: 50px;
+            display: none;
+        }
+
+        .btn {
+            margin: 10px;
+            text-transform: uppercase;
+            font-size: 50px;
         }
     </style>
 </head>
 
 <body>
+    <button onclick="gioca()">GIOCA</button>
     <div class="container" id="container">
+
+
+    </div>
+    <div class="container" id="game">
 
     </div>
 </body>
 <script>
+
+    let scelte = [];
+
+    function rispondi(elId, btnId) {
+        console.log(elId, btnId)
+        var el = document.getElementById(elId);
+        var btn = document.getElementById(btnId);
+        el.style.display = "block";
+        btn.style.display = "none";
+    }
+
+    function scegli(flagContainerId) {
+        var el = document.getElementById(flagContainerId);
+        if (scelte.indexOf(flagContainerId) < 0) {
+            el.style.backgroundColor = 'lime';
+            scelte.push(flagContainerId);
+        }
+        else {
+            el.style.backgroundColor = 'darkgray';
+            scelte = scelte.filter(id => id !== flagContainerId);
+        }
+    }
+
+    function gioca() {
+        if (scelte.length !== 3) {
+            alert("Devi scegliere 3 bandiere");
+            return;
+        }
+        clean();
+        prepare();
+    }
+
+    function clean() {
+        var body = document.getElementsByTagName('body')[0];
+        var container = document.getElementById('container');
+        body.removeChild(container);
+    }
+
+    function initFlag() {
+        let container = document.getElementById('container');
+
+        for (let i = 0; i < countries.length; i++) {
+            var flagContainer = document.createElement("div");
+            flagContainer.className = 'flagContainer';
+            flagContainer.id = countries[i].country;
+            flagContainer.onclick = () => scegli(countries[i].country);
+            container.appendChild(flagContainer);
+
+            var flag = document.createElement("img");
+            flag.setAttribute('src', 'https:' + countries[i].flag);
+            flag.className = 'flag';
+            flagContainer.appendChild(flag);
+        }
+    }
+
+    function prepare() {
+        let container = document.getElementById('game');
+
+
+        for (let i = 0; i < scelte.length; i++) {
+            const country = countries.filter(c => c.country === scelte[i])[0];
+            console.log(country);
+            var flagContainer = document.createElement("div");
+            flagContainer.className = 'flagContainerGame';
+            flagContainer.id = country.country;
+            container.appendChild(flagContainer);
+
+            var flag = document.createElement("img");
+            flag.setAttribute('src', 'https:' + country.flag);
+            flag.className = 'flag';
+            flagContainer.appendChild(flag);
+
+            var nameEl = document.createElement("div");
+            nameEl.setAttribute("id", 'nome_' + country.country);
+            nameEl.className = 'label';
+            nameEl.appendChild(document.createTextNode(country.country));
+            flagContainer.appendChild(nameEl);
+
+            var btn = document.createElement("button");
+            btn.innerText = 'MOSTRA NOME';
+            btn.className = 'btn';
+            btn.setAttribute("id", 'btn_nome_' + country.country);
+            btn.onclick = () => rispondi('nome_' + country.country, 'btn_nome_' + country.country);
+
+            flagContainer.appendChild(btn);
+        }
+    }
+
 
     const countries = [
         {
@@ -921,17 +1037,8 @@
     ];
 
 
-    let container = document.getElementById('container');
-    for (let i = 0; i < countries.length; i++) {
-        var flagContainer =  document.createElement("div");
-        flagContainer.className = 'flagContainer';
-        container.appendChild(flagContainer);
+    initFlag();
 
-        var flag = document.createElement("img");
-        flag.setAttribute('src', 'https:' + countries[i].flag);
-        flag.className = 'flag';
-        flagContainer.appendChild(flag);
-    }
 
 
 </script>
