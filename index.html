@@ -29,6 +29,12 @@
             text-transform: uppercase;
             font-size: 50px;
         }
+
+        .division {
+            width: 100%;
+            height: 10px;
+            background-color: black;
+        }
     </style>
 </head>
 
@@ -48,24 +54,6 @@
         btn.style.display = "none";
     }
 
-    function shuffle(array) {
-        let currentIndex = array.length, randomIndex;
-
-        // While there remain elements to shuffle.
-        while (currentIndex != 0) {
-
-            // Pick a remaining element.
-            randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex--;
-
-            // And swap it with the current element.
-            [array[currentIndex], array[randomIndex]] = [
-                array[randomIndex], array[currentIndex]];
-        }
-
-        return array;
-    }
-
 
 
     fetch("countries.json")
@@ -73,9 +61,14 @@
             return res.json();
         })
         .then(countries => {
-            console.log("AAAA");
             console.log(countries);
             for (let i = 0; i < countries.length; i++) {
+                if (i % 20){
+                    var division = document.createElement("div");
+                    division.className = 'division';
+                    containerCountries.appendChild(division);
+                }
+
                 var country = document.createElement("div");
                 country.className = 'country';
                 country.setAttribute("id", countries[i].country);
