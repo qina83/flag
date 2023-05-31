@@ -63,7 +63,7 @@
         .then(countries => {
             console.log(countries);
             for (let i = 0; i < countries.length; i++) {
-                if (i % 20){
+                if (i % 20 === 0){
                     var division = document.createElement("div");
                     division.className = 'division';
                     containerCountries.appendChild(division);
