@@ -54,7 +54,7 @@
 </head>
 
 <body>
-    <button onclick="gioca()">GIOCA</button>
+    <button onclick="gioca()" id="gioca">GIOCA</button>
     <div class="container" id="container">
 
 
@@ -99,7 +99,9 @@
     function clean() {
         var body = document.getElementsByTagName('body')[0];
         var container = document.getElementById('container');
+        var btn = document.getElementById('gioca');
         body.removeChild(container);
+        body.removeChild(btn);
     }
 
     function initFlag() {
