@@ -2,12 +2,75 @@
 
 <head>
     <style>
+        .flip-card {
+            background-color: transparent;
+            margin: 10px;
+            padding: 10px;
+            width: 25%;
+            height: 450px;
+            border-radius: 10px;
+            perspective: 1000px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        .flip-card.rotate .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 10px;
+        }
+
+        .flip-card-front {
+            background-color: #bbb;
+            color: black;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .flip-card-back {
+            background-color: #2980b9;
+            color: white;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+
+        .containerGame {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
         .container {
             width: 100%;
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
             justify-content: center;
+            height: calc(100% - 120px);
+            overflow-y: auto;
         }
 
         .flagContainer {
@@ -20,6 +83,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            border-radius: 10px;
         }
 
         .flagContainerGame {
@@ -34,15 +98,16 @@
         }
 
         .flag {
-            max-width: 100%;
+            margin: 10px;
+            max-width: calc(100% - 20px);
             height: auto;
+            max-height: 250px;
         }
 
         .label {
             margin: 10px;
             text-transform: uppercase;
-            font-size: 4vw;
-            display: none;
+            font-size: 30pt;
         }
 
         .btn {
@@ -50,17 +115,26 @@
             text-transform: uppercase;
             font-size: 2vw;
             height: 60px;
+            border-radius: 10px;
+            border: none;
+            background-color: #2980b9;
+            color: white;
+            -webkit-box-shadow: 2px 2px 10px 5px rgba(0, 0, 0, 0.45);
+            box-shadow: 2px 2px 10px 5px rgba(0, 0, 0, 0.45);
+            cursor: pointer;
         }
     </style>
 </head>
 
 <body style="text-align: center;">
-    <button onclick="gioca()" id="gioca" style="width: 50%; height: 100px; cursor: pointer; font-size: 3vw;">GIOCA</button>
+    <h1>BANDIERE DEL MONDO</h1>
+    <button class='btn' onclick="gioca()" id="gioca"
+        style="width: 50%; height: 100px; cursor: pointer; font-size: 3vw;">GIOCA</button>
     <div class="container" id="container">
 
 
     </div>
-    <div class="container" id="game">
+    <div class="containerGame" id="game">
 
     </div>
 </body>
@@ -68,12 +142,10 @@
 
     let scelte = [];
 
-    function rispondi(elId, btnId) {
-        console.log(elId, btnId)
-        var el = document.getElementById(elId);
-        var btn = document.getElementById(btnId);
-        el.style.display = "block";
-        btn.style.display = "none";
+    function rispondi(cardId) {
+        var card = document.getElementById(cardId);
+        card.classList.toggle('rotate');
+
     }
 
     function scegli(flagContainerId) {
@@ -129,29 +201,46 @@
         for (let i = 0; i < scelte.length; i++) {
             const country = countries.filter(c => c.country === scelte[i])[0];
             console.log(country);
-            var flagContainer = document.createElement("div");
-            flagContainer.className = 'flagContainerGame';
-            flagContainer.id = country.country;
-            container.appendChild(flagContainer);
+
+            var flipCard = document.createElement("div");
+            flipCard.className = 'flip-card';
+            flipCard.id = 'card_' + country.country.replaceAll(' ', '_');
+            container.appendChild(flipCard);
+
+            var flipCardInner = document.createElement("div");
+            flipCardInner.className = 'flip-card-inner';
+            flipCard.appendChild(flipCardInner);
+
+            var flipCardFront = document.createElement("div");
+            flipCardFront.className = 'flip-card-front';
+            flipCardInner.appendChild(flipCardFront);
+
+            var flipCardBack = document.createElement("div");
+            flipCardBack.className = 'flip-card-back';
+            flipCardInner.appendChild(flipCardBack);
 
             var flag = document.createElement("img");
             flag.setAttribute('src', 'https:' + country.flag);
             flag.className = 'flag';
-            flagContainer.appendChild(flag);
+            flipCardFront.appendChild(flag);
 
             var nameEl = document.createElement("div");
             nameEl.setAttribute("id", 'nome_' + country.country);
             nameEl.className = 'label';
             nameEl.appendChild(document.createTextNode(country.country));
-            flagContainer.appendChild(nameEl);
+            flipCardBack.appendChild(nameEl);
+
+            var flagBack = document.createElement("img");
+            flagBack.setAttribute('src', 'https:' + country.flag);
+            flagBack.className = 'flag';
+            flipCardBack.appendChild(flagBack);
 
             var btn = document.createElement("button");
-            btn.innerText = 'MOSTRA NOME';
+            btn.innerText = 'SCOPRI';
             btn.className = 'btn';
             btn.setAttribute("id", 'btn_nome_' + country.country);
-            btn.onclick = () => rispondi('nome_' + country.country, 'btn_nome_' + country.country);
-
-            flagContainer.appendChild(btn);
+            btn.onclick = () => rispondi('card_' + country.country.replaceAll(' ', '_'));
+            flipCardFront.appendChild(btn);
         }
     }
 
@@ -1039,9 +1128,7 @@
         }
     ];
 
-
     initFlag();
-
 
 
 </script>
