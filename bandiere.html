@@ -6,7 +6,7 @@
             background-color: transparent;
             margin: 10px;
             padding: 10px;
-            width: 25%;
+            width: 20%;
             height: 450px;
             border-radius: 10px;
             perspective: 1000px;
@@ -128,10 +128,11 @@
 
 <body style="text-align: center;">
     <h1>BANDIERE DEL MONDO</h1>
+
     <button class='btn' onclick="gioca()" id="gioca"
         style="width: 50%; height: 100px; cursor: pointer; font-size: 3vw;">GIOCA</button>
     <div class="container" id="container">
-
+        <h2>Ogni giudice scelga una bandiera</h2>
 
     </div>
     <div class="containerGame" id="game">
@@ -161,8 +162,8 @@
     }
 
     function gioca() {
-        if (scelte.length !== 3) {
-            alert("Devi scegliere 3 bandiere");
+        if (scelte.length !== 4) {
+            alert("Devi scegliere 4 bandiere");
             return;
         }
         clean();
