@@ -46,11 +46,12 @@
     </div>
 </body>
 <script>
-    function myFunction(elId, btnId) {
-        console.log(elId, btnId)
+    function myFunction(elId, btnId, elid2) {
         var el = document.getElementById(elId);
+        var el2 = document.getElementById(elid2);
         var btn = document.getElementById(btnId);
         el.style.display = "block";
+        el2.style.display = "block";
         btn.style.display = "none";
     }
 
@@ -90,7 +91,7 @@
                 btn.innerText = 'MOSTRA NOME';
                 btn.className = 'btn';
                 btn.setAttribute("id", 'btn_nome_' + countries[i].country);
-                btn.onclick = () => myFunction('nome_' + countries[i].country, 'btn_nome_' + countries[i].country);
+                btn.onclick = () => myFunction('nome_' + countries[i].country, 'btn_nome_' + countries[i].country, 'capital_' + countries[i].country);
 
                 country.appendChild(btn);
 
