@@ -20,11 +20,6 @@
         "flag": "//upload.wikimedia.org/wikipedia/commons/9/9d/Flag_of_Angola.svg"
     },
     {
-        "country": "Anguilla",
-        "capital": "The Valley",
-        "flag": "//upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Anguilla.svg"
-    },
-    {
         "country": "Antigua e Barbuda",
         "capital": "Saint John's",
         "flag": "//upload.wikimedia.org/wikipedia/commons/8/89/Flag_of_Antigua_and_Barbuda.svg"
@@ -95,11 +90,6 @@
         "flag": "//upload.wikimedia.org/wikipedia/commons/0/0a/Flag_of_Benin.svg"
     },
     {
-        "country": "Bermuda",
-        "capital": "Hamilton",
-        "flag": "//upload.wikimedia.org/wikipedia/commons/b/bf/Flag_of_Bermuda.svg"
-    },
-    {
         "country": "Bhutan",
         "capital": "Thimphu",
         "flag": "//upload.wikimedia.org/wikipedia/commons/9/91/Flag_of_Bhutan.svg"
@@ -153,11 +143,6 @@
         "country": "Capo Verde",
         "capital": "Praia",
         "flag": "//upload.wikimedia.org/wikipedia/commons/3/38/Flag_of_Cape_Verde.svg"
-    },
-    {
-        "country": "Cayman Islands",
-        "capital": "George Town",
-        "flag": "//upload.wikimedia.org/wikipedia/commons/0/0f/Flag_of_the_Cayman_Islands.svg"
     },
     {
         "country": "Repubblica centraficana",
@@ -268,11 +253,6 @@
         "country": "Etiopia",
         "capital": "Addis Abeba",
         "flag": "//upload.wikimedia.org/wikipedia/commons/7/71/Flag_of_Ethiopia.svg"
-    },
-    {
-        "country": "Faroe Islands",
-        "capital": "Tórshavn",
-        "flag": "//upload.wikimedia.org/wikipedia/commons/3/3c/Flag_of_the_Faroe_Islands.svg"
     },
     {
         "country": "Finlandia",
@@ -543,11 +523,6 @@
         "country": "Montenegro",
         "capital": "Podgorica",
         "flag": "//upload.wikimedia.org/wikipedia/commons/6/64/Flag_of_Montenegro.svg"
-    },
-    {
-        "country": "Montserrat",
-        "capital": "Plymouth",
-        "flag": "//upload.wikimedia.org/wikipedia/commons/d/d0/Flag_of_Montserrat.svg"
     },
     {
         "country": "Marocco",
