@@ -55,6 +55,9 @@
         btn.style.display = "none";
     }
 
+    function shuffle(data){
+        return data.sort( () => Math.random() - 0.5);
+    }
 
 
     fetch("countries.json")
@@ -62,6 +65,8 @@
             return res.json();
         })
         .then(countries => {
+
+            countries = shuffle(countries);
             console.log(countries.length);
             for (let i = 0; i < countries.length; i++) {
                 if (i % 20 === 0){
